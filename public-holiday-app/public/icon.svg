@@ -1,0 +1,49 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Navy blue background -->
+  <rect width="512" height="512" fill="#1a365d" rx="64"/>
+  
+  <!-- Calendar container -->
+  <g transform="translate(96, 96)">
+    <!-- Calendar body - white -->
+    <rect x="0" y="40" width="320" height="280" fill="#ffffff" rx="12"/>
+    
+    <!-- Calendar header - dark blue -->
+    <rect x="0" y="0" width="320" height="80" fill="#2c5282" rx="12"/>
+    <rect x="0" y="52" width="320" height="28" fill="#2c5282"/>
+    
+    <!-- Calendar binding rings -->
+    <circle cx="80" cy="40" r="16" fill="#1a365d"/>
+    <circle cx="160" cy="40" r="16" fill="#1a365d"/>
+    <circle cx="240" cy="40" r="16" fill="#1a365d"/>
+    
+    <!-- Calendar grid lines -->
+    <line x1="0" y1="140" x2="320" y2="140" stroke="#2c5282" stroke-width="2" opacity="0.3"/>
+    <line x1="0" y1="190" x2="320" y2="190" stroke="#2c5282" stroke-width="2" opacity="0.3"/>
+    <line x1="0" y1="240" x2="320" y2="240" stroke="#2c5282" stroke-width="2" opacity="0.3"/>
+    
+    <!-- Vertical grid -->
+    <line x1="80" y1="90" x2="80" y2="320" stroke="#2c5282" stroke-width="2" opacity="0.3"/>
+    <line x1="160" y1="90" x2="160" y2="320" stroke="#2c5282" stroke-width="2" opacity="0.3"/>
+    <line x1="240" y1="90" x2="240" y2="320" stroke="#2c5282" stroke-width="2" opacity="0.3"/>
+    
+    <!-- Day numbers -->
+    <text x="40" y="125" fill="#2c5282" font-size="28" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif">1</text>
+    <text x="120" y="125" fill="#2c5282" font-size="28" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif">2</text>
+    <text x="200" y="125" fill="#2c5282" font-size="28" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif">3</text>
+    <text x="280" y="125" fill="#2c5282" font-size="28" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif">4</text>
+    
+    <!-- Market bell icon (golden) -->
+    <g transform="translate(220, 180)">
+      <!-- Bell body -->
+      <path d="M 0 -30 Q -25 -30 -35 0 L -35 10 Q -35 20 -25 25 L 25 25 Q 35 20 35 10 L 35 0 Q 25 -30 0 -30 Z" fill="#d69e2e"/>
+      <!-- Bell top -->
+      <circle cx="0" cy="-35" r="8" fill="#ecc94b"/>
+      <!-- Bell clapper -->
+      <circle cx="0" cy="30" r="6" fill="#ecc94b"/>
+    </g>
+    
+    <!-- Red "Market Closed" badge -->
+    <circle cx="270" cy="160" r="28" fill="#e53e3e"/>
+    <text x="270" y="168" fill="#ffffff" font-size="32" font-weight="bold" text-anchor="middle" font-family="Arial, sans-serif">!</text>
+  </g>
+</svg>
