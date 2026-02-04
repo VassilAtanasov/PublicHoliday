@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Holiday Today</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎉 Public Holiday Checker</h1>
+            <p class="subtitle">Discover what public holiday is today</p>
+        </header>
+        
+        <main>
+            <div class="date-display">
+                <div class="current-date" id="currentDate"></div>
+            </div>
+            
+            <div class="location-selector">
+                <label for="country">Select your country:</label>
+                <select id="country">
+                    <option value="US">United States</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="CA">Canada</option>
+                    <option value="AU">Australia</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="IT">Italy</option>
+                    <option value="ES">Spain</option>
+                    <option value="JP">Japan</option>
+                    <option value="CN">China</option>
+                    <option value="IN">India</option>
+                    <option value="BR">Brazil</option>
+                </select>
+            </div>
+            
+            <button id="checkButton" class="check-button">Check Today's Holidays</button>
+            
+            <div id="results" class="results">
+                <div class="loading" id="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Checking holidays...</p>
+                </div>
+                <div id="holidayInfo" class="holiday-info"></div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Data provided by Calendarific API</p>
+            <p class="note">Note: This is a simple AI-powered app. Holiday information may vary by region.</p>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
