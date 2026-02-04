@@ -1,6 +1,6 @@
 # PublicHoliday
 
-Simple AI app to display what public holiday is today
+Simple web app to display what public holiday is today
 
 ## Features
 
@@ -54,10 +54,10 @@ This is a static website that can be deployed to:
 ## Future Enhancements
 
 - Integration with live holiday API (Calendarific, Nager.Date, etc.)
+- AI-powered holiday recommendations
 - More countries and regions
 - Upcoming holidays view
 - Calendar integration
-- AI-powered holiday recommendations
 
 ## License
 
