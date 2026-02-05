@@ -11,7 +11,15 @@ const fetchHolidayData = async () => {
   error.value = ''
   
   try {
-    const response = await fetch('https://funcapp-hnn5vijj5yj7e.azurewebsites.net/api/Function1', {
+    const now = new Date()
+    const formattedDate = now.toLocaleDateString('en-US', {
+      month: 'short',
+      day: '2-digit',
+      year: 'numeric'
+    })
+    const question = `list me the national holidays (off work) On ${formattedDate} across the world. group the list so that the most popular holiday to be on top with countries in brackets. present the answer in list without explanations`
+    const url = `https://funcapp-hnn5vijj5yj7e.azurewebsites.net/api/Function1?question=${encodeURIComponent(question)}`
+    const response = await fetch(url, {
       method: 'POST'
     })
     
