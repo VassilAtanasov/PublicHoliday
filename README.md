@@ -9,6 +9,7 @@ Visit the app at: [https://vassilatanasov.github.io/PublicHoliday/](https://vass
 ## 📱 Features
 
 - Modern Vue.js 3 web application
+- **Native Android app support** via Capacitor
 - Mobile-first responsive design with Tailwind CSS
 - Real-time public holiday information
 - Automatic deployment to GitHub Pages
@@ -17,6 +18,7 @@ Visit the app at: [https://vassilatanasov.github.io/PublicHoliday/](https://vass
 ## 🛠️ Technology Stack
 
 - **Vue.js 3** - Latest Vue framework with Composition API
+- **Capacitor** - Native mobile app runtime
 - **Tailwind CSS** - Modern utility-first CSS framework
 - **Vite** - Lightning-fast build tool
 - **TypeScript** - Type-safe development
@@ -29,6 +31,8 @@ Visit the app at: [https://vassilatanasov.github.io/PublicHoliday/](https://vass
 
 ## 🚦 Getting Started
 
+### Web Application
+
 Navigate to the `public-holiday-app` directory and follow the instructions in its README:
 
 ```bash
@@ -36,6 +40,19 @@ cd public-holiday-app
 npm install
 npm run dev
 ```
+
+### 🤖 Android Native App
+
+To build and run as a native Android application:
+
+```bash
+cd public-holiday-app
+npm install
+npm run android:build    # Build web app and sync to Android
+npm run android:open     # Open in Android Studio
+```
+
+For detailed Android setup instructions, see [public-holiday-app/ANDROID.md](./public-holiday-app/ANDROID.md).
 
 ## 📦 Project Structure
 
@@ -45,12 +62,16 @@ PublicHoliday/
 │   └── workflows/
 │       └── deploy.yml          # GitHub Actions deployment workflow
 ├── public-holiday-app/         # Vue.js application
+│   ├── android/               # Native Android project (Capacitor)
 │   ├── src/
 │   │   ├── App.vue            # Main application component
 │   │   ├── main.ts            # Application entry point
 │   │   └── assets/            # Stylesheets and assets
+│   ├── capacitor.config.ts    # Capacitor configuration
+│   ├── ANDROID.md            # Android setup guide
 │   ├── package.json
 │   └── vite.config.ts
+├── ANDROID_CONVERSION_SUMMARY.md  # Detailed Android conversion info
 └── README.md
 ```
 
