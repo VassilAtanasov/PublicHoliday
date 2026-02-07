@@ -1,6 +1,6 @@
 # Public Holiday App
 
-A modern, mobile-first web application built with Vue.js 3 and Tailwind CSS that displays current public holiday information.
+A modern, mobile-first web application built with Vue.js 3 and Tailwind CSS that displays current public holiday information. Now available as a **native Android app** using Capacitor!
 
 ## Features
 
@@ -10,6 +10,7 @@ A modern, mobile-first web application built with Vue.js 3 and Tailwind CSS that
 - 🎨 Modern, gradient-based UI with smooth animations
 - ♻️ Real-time data fetching with retry capability
 - 🌐 Deployed on GitHub Pages
+- 🤖 **Native Android app support** - Run as a native mobile application
 
 ## Live Demo
 
@@ -77,12 +78,29 @@ To manually deploy:
 
 3. Deploy the contents of `dist` to your hosting provider
 
+## 📱 Native Android App
+
+This app can also run as a native Android application using Capacitor!
+
+### Quick Start for Android
+
+```sh
+# Build the web app and sync to Android
+npm run android:build
+
+# Open in Android Studio
+npm run android:open
+```
+
+For detailed Android setup instructions, building, and deployment, see [ANDROID.md](./ANDROID.md).
+
 ## Technology Stack
 
 - **Vue.js 3** - Progressive JavaScript framework
 - **Vite** - Next generation frontend tooling
 - **Tailwind CSS** - Utility-first CSS framework
 - **TypeScript** - Type-safe JavaScript
+- **Capacitor** - Native mobile app framework
 - **GitHub Actions** - CI/CD pipeline
 - **GitHub Pages** - Hosting
 

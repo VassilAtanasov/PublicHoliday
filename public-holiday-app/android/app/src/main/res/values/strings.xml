@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Public Holiday</string>
+    <string name="title_activity_main">Public Holiday</string>
+    <string name="package_name">com.publicholiday.app</string>
+    <string name="custom_url_scheme">com.publicholiday.app</string>
+</resources>
