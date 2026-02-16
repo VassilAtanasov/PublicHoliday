@@ -17,7 +17,7 @@ const fetchHolidayData = async () => {
       day: '2-digit',
       year: 'numeric'
     })
-    const question = `list me the national holidays (off work) On ${formattedDate} across the world. group the list so that the most popular holiday to be on top with countries in brackets. present the answer in list without explanations`
+    const question = `Return a plain-text list (no other Markdown). List national public holidays (off work) on ${formattedDate} worldwide. Always put United States holidays first (if any). Group by holiday name with countries in parentheses, ordered by popularity. No explanations.`
     const url = `https://funcapp-hnn5vijj5yj7e.azurewebsites.net/api/Function1?question=${encodeURIComponent(question)}`
     const response = await fetch(url, {
       method: 'POST'
