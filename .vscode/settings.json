@@ -1,0 +1,7 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "npm run android:run": true,
+        "java": true,
+        "&": true
+    }
+}

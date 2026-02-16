@@ -10,14 +10,15 @@
     "test:unit": "vitest",
     "test:e2e": "playwright test",
     "build-only": "vite build",
+    "build:capacitor": "vite build --mode capacitor",
     "type-check": "vue-tsc --build",
     "lint": "run-s lint:*",
     "lint:oxlint": "oxlint . --fix",
     "lint:eslint": "eslint . --fix --cache",
     "android:sync": "npx cap sync android",
     "android:open": "npx cap open android",
-    "android:build": "npm run build && npx cap sync android",
-    "android:run": "npx cap run android"
+    "android:build": "npm run build:capacitor && npx cap sync android",
+    "android:run": "npm run build:capacitor && npx cap run android"
   },
   "dependencies": {
     "@capacitor/android": "^8.0.2",
