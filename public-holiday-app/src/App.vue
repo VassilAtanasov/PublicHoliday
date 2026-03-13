@@ -12,12 +12,12 @@ const fetchHolidayData = async () => {
   
   try {
     const now = new Date()
-    const formattedDate = now.toLocaleDateString('en-US', {
-      month: 'short',
-      day: '2-digit',
-      year: 'numeric'
-    })
-    const question = `Return a plain-text list (no other Markdown). List national public holidays (off work) on ${formattedDate} worldwide. Always put United States holidays first (if any). Verify it is a non-working day in the country. Group by holiday name with countries in parentheses, ordered by popularity. No explanations.`
+    const tomorrow = new Date(now)
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    const holidayDateFormatOptions: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit', year: 'numeric' }
+    const formattedDate = now.toLocaleDateString('en-US', holidayDateFormatOptions)
+    const formattedTomorrow = tomorrow.toLocaleDateString('en-US', holidayDateFormatOptions)
+    const question = `Return a plain-text list (no other Markdown). List national public holidays (off work) on ${formattedDate} and ${formattedTomorrow} worldwide. Always put United States holidays first (if any). Verify it is a non-working day in the country. Group by holiday name with countries in parentheses, ordered by popularity. No explanations.`
     const url = `https://funcapp-hnn5vijj5yj7e.azurewebsites.net/api/Function1?question=${encodeURIComponent(question)}`
     const response = await fetch(url, {
       method: 'POST'
