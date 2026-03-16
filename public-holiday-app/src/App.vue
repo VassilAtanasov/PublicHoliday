@@ -18,7 +18,7 @@ const fetchHolidayData = async () => {
     const formattedDate = now.toLocaleDateString('en-US', holidayDateFormatOptions)
     const formattedTomorrow = tomorrow.toLocaleDateString('en-US', holidayDateFormatOptions)
     const question = `Return a plain-text list (no other Markdown). List national public holidays (off work) on ${formattedDate} and ${formattedTomorrow} worldwide. Always put United States holidays first (if any). Verify it is a non-working day in the country. Group by holiday name with countries in parentheses, ordered by popularity. No explanations.`
-    const url = `https://funcapp-hnn5vijj5yj7e.azurewebsites.net/api/Function1?question=${encodeURIComponent(question)}`
+    const url = `https://45f2opaos26j5odxxk3ldbjs5q0zavtg.lambda-url.eu-north-1.on.aws/?question=${encodeURIComponent(question)}`
     const response = await fetch(url, {
       method: 'POST'
     })
