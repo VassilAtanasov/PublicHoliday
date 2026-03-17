@@ -4,7 +4,7 @@ This folder is reserved for a step-by-step React version of the existing public 
 
 ## Progress summary
 
-- Overall status: Phases 1 to 4 completed, phase 5 pending
+- Overall status: Phases 1 to 5 completed, phase 6 pending
 - Last updated: 2026-03-17
 
 ## Checklist
@@ -13,7 +13,7 @@ This folder is reserved for a step-by-step React version of the existing public 
 - [x] Phase 2: First test
 - [x] Phase 3: Component with props and hooks
 - [x] Phase 4: Replace Vue GitHub Pages deployment with React
-- [ ] Phase 5: Replace mock holiday data with real AWS Lambda API call
+- [x] Phase 5: Replace mock holiday data with real AWS Lambda API call
 - [ ] Phase 6: Store recent results
 
 ## Scope for now
@@ -124,17 +124,24 @@ Learning focus:
 
 ### Phase 5: Replace mock holiday data with real AWS Lambda API call
 
-Status: not started
+Status: completed
 
 Goal: replace the mock holiday loading flow with a real API call to AWS Lambda.
 
 Planned work:
-- [ ] Update the custom hook so it calls the real AWS Lambda endpoint instead of cycling through mock data
-- [ ] Preserve the existing loading and success UI states
-- [ ] Add explicit error handling for failed responses
-- [ ] Read the Lambda endpoint from configuration instead of hardcoding it into the component tree when possible
-- [ ] Define and document the expected API contract
-- [ ] Parse the returned payload into the existing title and description UI shape
+- [x] Update the custom hook so it calls the real AWS Lambda endpoint instead of cycling through mock data
+- [x] Preserve the existing loading and success UI states
+- [x] Add explicit error handling for failed responses
+- [x] Read the Lambda endpoint from configuration instead of hardcoding it into the component tree when possible
+- [x] Define and document the expected API contract
+- [x] Parse the returned payload into the existing title and description UI shape
+
+Completed result:
+- The custom hook now calls the AWS Lambda URL with a generated `question` query parameter using `POST`
+- The plain-text Lambda response is parsed into the existing title and description UI
+- An explicit error state is rendered when the request fails
+- React tests now cover both successful and failed Lambda requests with mocked fetch responses
+- Production build completed successfully after the live-data integration
 
 Learning focus:
 - Real API calls in React hooks

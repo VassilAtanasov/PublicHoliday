@@ -2,7 +2,7 @@ import HolidayResult from './components/HolidayResult'
 import { useMockHoliday } from './hooks/useMockHoliday'
 
 function App() {
-  const { holiday, loading, loadMockHoliday } = useMockHoliday()
+  const { holiday, loading, error, loadMockHoliday } = useMockHoliday()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 text-slate-900">
@@ -11,7 +11,7 @@ function App() {
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white">
             <h1 className="text-center text-2xl font-bold">Public Holiday React</h1>
             <p className="mt-2 text-center text-sm text-blue-100">
-              Phase 3: components with props and a custom hook.
+              Phase 5: live AWS Lambda data through a custom hook.
             </p>
           </div>
 
@@ -20,6 +20,7 @@ function App() {
               title={holiday.title}
               description={holiday.description}
               loading={loading}
+              error={error}
             />
 
             <button
@@ -28,12 +29,12 @@ function App() {
               disabled={loading}
               className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 font-semibold text-white shadow-md transition duration-200 hover:from-blue-700 hover:to-indigo-700 disabled:cursor-not-allowed disabled:opacity-70"
             >
-              {loading ? 'Loading...' : 'Load Mock Holiday'}
+              {loading ? 'Loading...' : 'Load Today\'s Holiday'}
             </button>
           </div>
 
           <div className="bg-gray-50 px-6 py-4 text-center text-sm text-gray-600">
-            <p>Learning focus: props, custom hooks, and separation of concerns.</p>
+            <p>Learning focus: live API calls, async state, and error handling.</p>
           </div>
         </div>
       </div>
