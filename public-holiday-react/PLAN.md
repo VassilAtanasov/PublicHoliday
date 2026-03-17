@@ -5,14 +5,16 @@ This folder is reserved for a step-by-step React version of the existing public 
 ## Progress summary
 
 - Overall status: Phases 1 to 3 completed, phase 4 pending
-- Last updated: 2026-03-12
+- Last updated: 2026-03-17
 
 ## Checklist
 
 - [x] Phase 1: Simplest version
 - [x] Phase 2: First test
 - [x] Phase 3: Component with props and hooks
-- [ ] Phase 4: Store recent results
+- [ ] Phase 4: Replace Vue GitHub Pages deployment with React
+- [ ] Phase 5: Replace mock holiday data with real AWS Lambda API call
+- [ ] Phase 6: Store recent results
 
 ## Scope for now
 
@@ -22,7 +24,6 @@ Out of scope for the initial phases:
 - Android
 - Capacitor
 - PWA parity
-- Live API integration
 - TypeScript conversion
 - Redux migration
 
@@ -95,7 +96,47 @@ Learning focus:
 - Parent and child data flow
 - Separation of concerns
 
-### Phase 4: Store recent results
+### Phase 4: Replace Vue GitHub Pages deployment with React
+
+Status: not started
+
+Goal: make GitHub Pages serve the React app instead of the current Vue app.
+
+Planned work:
+- [ ] Update the existing GitHub Actions workflow to install dependencies from `public-holiday-react`
+- [ ] Build `public-holiday-react` instead of `public-holiday-app`
+- [ ] Upload `public-holiday-react/dist` instead of the Vue dist output
+- [ ] Update the React Vite config so the production base path works on the repository GitHub Pages URL
+- [ ] Update documentation so the repo clearly states that GitHub Pages now serves the React app
+
+Learning focus:
+- Deployment workflows
+- Production build configuration
+- GitHub Pages base paths
+- Replacing an existing deployment target safely
+
+### Phase 5: Replace mock holiday data with real AWS Lambda API call
+
+Status: not started
+
+Goal: replace the mock holiday loading flow with a real API call to AWS Lambda.
+
+Planned work:
+- [ ] Update the custom hook so it calls the real AWS Lambda endpoint instead of cycling through mock data
+- [ ] Preserve the existing loading and success UI states
+- [ ] Add explicit error handling for failed responses
+- [ ] Read the Lambda endpoint from configuration instead of hardcoding it into the component tree when possible
+- [ ] Define and document the expected API contract
+- [ ] Parse the returned payload into the existing title and description UI shape
+
+Learning focus:
+- Real API calls in React hooks
+- Async state handling
+- Error handling
+- API contract design
+- Configuration management
+
+### Phase 6: Store recent results
 
 Status: not started
 
@@ -113,13 +154,32 @@ Learning focus:
 - Reducer patterns
 - State updates across components
 
+## Relevant files
+
+- `c:\r\v\PublicHoliday\public-holiday-app\src\App.vue` — reference the existing UI states, layout, refresh interaction, and current holiday content presentation to mirror in React
+- `c:\r\v\PublicHoliday\public-holiday-app\src\main.ts` — reuse the simple entry-point pattern when creating the React entry file
+- `c:\r\v\PublicHoliday\public-holiday-app\src\assets\base.css` — reuse only the global reset ideas that still make sense
+- `c:\r\v\PublicHoliday\public-holiday-app\package.json` — mirror script naming and tooling patterns where useful
+- `c:\r\v\PublicHoliday\public-holiday-app\vite.config.ts` — reference the existing production base-path handling for the GitHub Pages replacement
+- `c:\r\v\PublicHoliday\public-holiday-react\src\hooks\useMockHoliday.js` — replace the mock cycling logic here with the real AWS Lambda request
+- `c:\r\v\PublicHoliday\public-holiday-react\src\App.jsx` — keep this focused on wiring hook output into the page
+- `c:\r\v\PublicHoliday\public-holiday-react\vite.config.js` — update this during the deployment phase for the GitHub Pages base path
+- `c:\r\v\PublicHoliday\public-holiday-react\package.json` — add or update environment-aware scripts only if needed for the Lambda integration
+- `c:\r\v\PublicHoliday\.github\workflows\deploy.yml` — switch the GitHub Pages workflow from Vue to React
+- `c:\r\v\PublicHoliday\README.md` — update later to reflect the React deployment and live API wiring
+
 ## Suggested verification per phase
 
 1. Simplest version renders and refreshes mock data correctly.
 2. The first unit test passes.
 3. Extracted component renders correctly from props.
 4. The custom hook preserves the same behavior.
-5. Recent results are stored and displayed in the expected order.
+5. During the deployment phase, verify the React app builds with the correct GitHub Pages base path and that the GitHub Actions workflow installs, builds, and uploads from `public-holiday-react` rather than `public-holiday-app`.
+6. After the deployment switch, confirm the repository GitHub Pages site serves the React app at the existing site URL instead of the Vue app.
+7. During the AWS Lambda phase, verify the mock logic has been removed from the hook, the real endpoint is called, loading and error states are visible, and the returned data is parsed into the current title and description UI.
+8. Add or update tests around the hook or UI so the live-data path is covered without making brittle real-network assumptions during normal test runs.
+9. After the recent-results store step, verify newly loaded results are appended, ordering is correct, and duplicate-handling behavior is defined.
+10. Run linting and the chosen test commands for the new app only.
 
 ## Tracking notes
 
@@ -130,7 +190,6 @@ Learning focus:
 ## Later follow-up ideas
 
 After these phases are complete, the next learning steps can be:
-- connect the live holiday API
 - convert the app to TypeScript
 - replace the built-in store with Redux
-- add deployment updates for the React app
+- add more deployment hardening or environment separation
