@@ -8,7 +8,7 @@ Visit the app at: [https://vassilatanasov.github.io/PublicHoliday/](https://vass
 
 ## 📱 Features
 
-- Modern Vue.js 3 web application
+- Modern React web application deployed to GitHub Pages
 - **Native Android app support** via Capacitor
 - Mobile-first responsive design with Tailwind CSS
 - Real-time public holiday information
@@ -17,11 +17,12 @@ Visit the app at: [https://vassilatanasov.github.io/PublicHoliday/](https://vass
 
 ## 🛠️ Technology Stack
 
-- **Vue.js 3** - Latest Vue framework with Composition API
+- **React** - Component-based UI for the deployed web app
+- **Vue.js 3** - Existing app retained in the repository for reference
 - **Capacitor** - Native mobile app runtime
 - **Tailwind CSS** - Modern utility-first CSS framework
 - **Vite** - Lightning-fast build tool
-- **TypeScript** - Type-safe development
+- **JavaScript** - Current React learning app language
 - **GitHub Actions** - Automated CI/CD
 - **GitHub Pages** - Free hosting
 
@@ -33,13 +34,17 @@ Visit the app at: [https://vassilatanasov.github.io/PublicHoliday/](https://vass
 
 ### Web Application
 
-Navigate to the `public-holiday-app` directory and follow the instructions in its README:
+Navigate to the `public-holiday-react` directory and follow the instructions in its README:
 
 ```bash
-cd public-holiday-app
+cd public-holiday-react
 npm install
 npm run dev
 ```
+
+The React app is now the GitHub Pages deployment target.
+
+The existing Vue app remains in `public-holiday-app` as a reference implementation.
 
 ### 🤖 Android Native App
 
@@ -61,6 +66,14 @@ PublicHoliday/
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml          # GitHub Actions deployment workflow
+├── public-holiday-react/       # React GitHub Pages application
+│   ├── src/
+│   │   ├── App.jsx            # Main React application component
+│   │   ├── components/        # React UI components
+│   │   ├── hooks/             # React hooks
+│   │   └── assets/            # Stylesheets and assets
+│   ├── package.json
+│   └── vite.config.js
 ├── public-holiday-app/         # Vue.js application
 │   ├── android/               # Native Android project (Capacitor)
 │   ├── src/
@@ -77,7 +90,7 @@ PublicHoliday/
 
 ## 🌐 Deployment
 
-The app is automatically deployed to GitHub Pages when changes are pushed to the main branch. The deployment is handled by GitHub Actions.
+The React app in `public-holiday-react` is automatically deployed to GitHub Pages when changes are pushed to the main branch. The deployment is handled by GitHub Actions.
 
 ### Setup GitHub Pages
 

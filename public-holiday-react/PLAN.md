@@ -4,7 +4,7 @@ This folder is reserved for a step-by-step React version of the existing public 
 
 ## Progress summary
 
-- Overall status: Phases 1 to 3 completed, phase 4 pending
+- Overall status: Phases 1 to 4 completed, phase 5 pending
 - Last updated: 2026-03-17
 
 ## Checklist
@@ -12,7 +12,7 @@ This folder is reserved for a step-by-step React version of the existing public 
 - [x] Phase 1: Simplest version
 - [x] Phase 2: First test
 - [x] Phase 3: Component with props and hooks
-- [ ] Phase 4: Replace Vue GitHub Pages deployment with React
+- [x] Phase 4: Replace Vue GitHub Pages deployment with React
 - [ ] Phase 5: Replace mock holiday data with real AWS Lambda API call
 - [ ] Phase 6: Store recent results
 
@@ -98,16 +98,23 @@ Learning focus:
 
 ### Phase 4: Replace Vue GitHub Pages deployment with React
 
-Status: not started
+Status: completed
 
 Goal: make GitHub Pages serve the React app instead of the current Vue app.
 
 Planned work:
-- [ ] Update the existing GitHub Actions workflow to install dependencies from `public-holiday-react`
-- [ ] Build `public-holiday-react` instead of `public-holiday-app`
-- [ ] Upload `public-holiday-react/dist` instead of the Vue dist output
-- [ ] Update the React Vite config so the production base path works on the repository GitHub Pages URL
-- [ ] Update documentation so the repo clearly states that GitHub Pages now serves the React app
+- [x] Update the existing GitHub Actions workflow to install dependencies from `public-holiday-react`
+- [x] Build `public-holiday-react` instead of `public-holiday-app`
+- [x] Upload `public-holiday-react/dist` instead of the Vue dist output
+- [x] Update the React Vite config so the production base path works on the repository GitHub Pages URL
+- [x] Update documentation so the repo clearly states that GitHub Pages now serves the React app
+
+Completed result:
+- GitHub Pages workflow switched from the Vue app to the React app
+- React production base path configured for the repository Pages URL
+- Root deployment documentation updated to describe React as the deployed app while keeping Vue in the repository
+- Editor validation passed for the changed files
+- Local production build re-run was skipped during this step, so GitHub Actions is the remaining deployment-path verification
 
 Learning focus:
 - Deployment workflows

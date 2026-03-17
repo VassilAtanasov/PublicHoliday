@@ -24,8 +24,10 @@ The deployment is configured in `.github/workflows/deploy.yml`. This workflow:
 
 - Triggers on push to `main` branch
 - Can also be manually triggered from the Actions tab
-- Builds the Vue.js app
+- Builds the React app from `public-holiday-react`
 - Deploys to GitHub Pages
+
+The Vue app remains in the repository, but GitHub Pages now publishes the React app.
 
 ### 3. First Deployment
 
@@ -61,12 +63,12 @@ You can monitor deployment status:
 If the build fails:
 1. Check the workflow logs in the Actions tab
 2. Ensure all dependencies are listed in `package.json`
-3. Try building locally first: `cd public-holiday-app && npm run build`
+3. Try building locally first: `cd public-holiday-react && npm run build`
 
 ### 404 Error After Deployment
 
 If you get a 404 error:
-1. Verify the `base` path in `vite.config.ts` matches your repository name
+1. Verify the `base` path in `public-holiday-react/vite.config.js` matches your repository name
 2. Wait a few minutes after deployment completes
 3. Try accessing the full path: `https://<username>.github.io/PublicHoliday/`
 
@@ -83,7 +85,7 @@ If you prefer to deploy manually without GitHub Actions:
 
 1. Build the app locally:
    ```bash
-   cd public-holiday-app
+   cd public-holiday-react
    npm run build
    ```
 
@@ -103,15 +105,12 @@ After merging changes to `main`:
 
 To use a custom domain:
 
-1. Add a `CNAME` file in `public-holiday-app/public/` with your domain
+1. Add a `CNAME` file in `public-holiday-react/public/` with your domain
 2. Configure DNS settings with your domain provider
 3. Enable "Enforce HTTPS" in GitHub Pages settings
 
 ## API Configuration
 
-The app calls this API endpoint:
-```
-https://funcapp-hnn5vijj5yj7e.azurewebsites.net/api/Function1
-```
+The deployed React app is still using mocked holiday data until the AWS Lambda integration phase is implemented.
 
-To change the API endpoint, edit `src/App.vue` and update the fetch URL.
+When that phase is completed, document the live endpoint and configuration source in `public-holiday-react` rather than the Vue app.
