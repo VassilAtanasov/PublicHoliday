@@ -1,4 +1,5 @@
 import HolidayResult from './components/HolidayResult'
+import RecentResults from './components/RecentResults'
 import { useMockHoliday } from './hooks/useMockHoliday'
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white">
             <h1 className="text-center text-2xl font-bold">Public Holiday React</h1>
             <p className="mt-2 text-center text-sm text-blue-100">
-              Phase 5: live AWS Lambda data through a custom hook.
+              Phase 6: recent results stored with Context and a reducer.
             </p>
           </div>
 
@@ -31,10 +32,12 @@ function App() {
             >
               {loading ? 'Loading...' : 'Load Today\'s Holiday'}
             </button>
+
+            <RecentResults />
           </div>
 
           <div className="bg-gray-50 px-6 py-4 text-center text-sm text-gray-600">
-            <p>Learning focus: live API calls, async state, and error handling.</p>
+            <p>Learning focus: shared state, Context, and reducer patterns.</p>
           </div>
         </div>
       </div>

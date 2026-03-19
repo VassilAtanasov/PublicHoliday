@@ -4,8 +4,8 @@ This folder is reserved for a step-by-step React version of the existing public 
 
 ## Progress summary
 
-- Overall status: Phases 1 to 5 completed, phase 6 pending
-- Last updated: 2026-03-17
+- Overall status: All phases 1 to 6 completed
+- Last updated: 2026-03-19
 
 ## Checklist
 
@@ -14,7 +14,7 @@ This folder is reserved for a step-by-step React version of the existing public 
 - [x] Phase 3: Component with props and hooks
 - [x] Phase 4: Replace Vue GitHub Pages deployment with React
 - [x] Phase 5: Replace mock holiday data with real AWS Lambda API call
-- [ ] Phase 6: Store recent results
+- [x] Phase 6: Store recent results
 
 ## Scope for now
 
@@ -152,15 +152,23 @@ Learning focus:
 
 ### Phase 6: Store recent results
 
-Status: not started
+Status: completed
 
 Goal: keep a history of recently loaded holiday results.
 
 Planned work:
-- [ ] Use built-in React state tools first
-- [ ] Add a small Context-based store or reducer-based store
-- [ ] Save recent results as plain objects with fields like `id`, `title`, `description`, and `loadedAt`
-- [ ] Show a recent results list in the UI
+- [x] Use built-in React state tools first
+- [x] Add a small Context-based store or reducer-based store
+- [x] Save recent results as plain objects with fields like `id`, `title`, `description`, and `loadedAt`
+- [x] Show a recent results list in the UI
+
+Completed result:
+- A `RecentResultsContext` created with a `useReducer`-based store
+- Context provider added to `main.jsx` wrapping the whole app
+- The `useMockHoliday` hook dispatches an `ADD_RESULT` action after each successful load
+- A `RecentResults` component reads from context and renders a list of past results (newest first)
+- The list is hidden when empty and appears automatically after the first successful load
+- Tests cover: list appears after load, newer results appear first, no entry added on error
 
 Learning focus:
 - Shared state
