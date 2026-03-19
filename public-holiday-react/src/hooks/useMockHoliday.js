@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useRecentResultsDispatch } from '../context/RecentResultsContext'
 
 const LAMBDA_URL = 'https://45f2opaos26j5odxxk3ldbjs5q0zavtg.lambda-url.eu-north-1.on.aws/'
 
@@ -40,6 +41,7 @@ export function useMockHoliday() {
   const [holiday, setHoliday] = useState(initialHoliday)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const dispatch = useRecentResultsDispatch()
 
   const loadMockHoliday = async () => {
     setLoading(true)
@@ -56,7 +58,17 @@ export function useMockHoliday() {
       }
 
       const text = await response.text()
-      setHoliday(parseHolidayText(text))
+      const parsed = parseHolidayText(text)
+      setHoliday(parsed)
+      dispatch({
+        type: 'ADD_RESULT',
+        result: {
+          id: crypto.randomUUID(),
+          title: parsed.title,
+          description: parsed.description,
+          loadedAt: new Date().toISOString(),
+        },
+      })
     } catch (requestError) {
       setError(
         requestError instanceof Error
