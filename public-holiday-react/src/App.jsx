@@ -1,8 +1,8 @@
 import HolidayResult from './components/HolidayResult'
-import { useMockHoliday } from './hooks/useMockHoliday'
+import { useAIService } from './hooks/useAIService'
 
 function App() {
-  const { holiday, loading, error, loadMockHoliday } = useMockHoliday()
+  const { holiday, loading, error, loadMockHoliday } = useAIService()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 text-slate-900">

@@ -36,7 +36,7 @@ const parseHolidayText = (text) => {
   }
 }
 
-export function useMockHoliday() {
+export function useAIService() {
   const [holiday, setHoliday] = useState(initialHoliday)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')

@@ -83,7 +83,7 @@ Goal: separate rendering from behavior.
 Planned work:
 - [x] Extract a reusable result component such as `HolidayResult`
 - [x] Pass data from `App` to the component through props
-- [x] Move loading logic into a custom hook such as `useMockHoliday`
+- [x] Move loading logic into a custom hook such as `useAIService`
 
 Completed result:
 - Result rendering extracted into a props-based component
@@ -175,7 +175,7 @@ Learning focus:
 - `c:\r\v\PublicHoliday\public-holiday-app\src\assets\base.css` — reuse only the global reset ideas that still make sense
 - `c:\r\v\PublicHoliday\public-holiday-app\package.json` — mirror script naming and tooling patterns where useful
 - `c:\r\v\PublicHoliday\public-holiday-app\vite.config.ts` — reference the existing production base-path handling for the GitHub Pages replacement
-- `c:\r\v\PublicHoliday\public-holiday-react\src\hooks\useMockHoliday.js` — replace the mock cycling logic here with the real AWS Lambda request
+- `c:\r\v\PublicHoliday\public-holiday-react\src\hooks\useAIService.js` — replace the mock cycling logic here with the real AWS Lambda request
 - `c:\r\v\PublicHoliday\public-holiday-react\src\App.jsx` — keep this focused on wiring hook output into the page
 - `c:\r\v\PublicHoliday\public-holiday-react\vite.config.js` — update this during the deployment phase for the GitHub Pages base path
 - `c:\r\v\PublicHoliday\public-holiday-react\package.json` — add or update environment-aware scripts only if needed for the Lambda integration
