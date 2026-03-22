@@ -1,8 +1,10 @@
 import { useState } from 'react'
 
-const LAMBDA_URL = 'https://45f2opaos26j5odxxk3ldbjs5q0zavtg.lambda-url.eu-north-1.on.aws/'
+const LAMBDA_URL = 'https://obeo6mf6wgez53kqen5bcjfyou0pfmem.lambda-url.eu-north-1.on.aws/'
 const DEV_PROXY_URL = '/api/holiday'
-const SERVICE_URL = import.meta.env.DEV ? DEV_PROXY_URL : LAMBDA_URL
+const SERVICE_URL = import.meta.env.DEV || import.meta.env.VITE_BUILD_TARGET === 'docker'
+  ? DEV_PROXY_URL
+  : LAMBDA_URL
 
 const initialHoliday = {
   title: 'Today\'s public holiday',

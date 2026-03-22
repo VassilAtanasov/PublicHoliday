@@ -4,8 +4,8 @@ This folder is reserved for a step-by-step React version of the existing public 
 
 ## Progress summary
 
-- Overall status: Phases 1 to 5 completed, phase 6 pending
-- Last updated: 2026-03-17
+- Overall status: Phases 1 to 6 completed, phase 7 pending
+- Last updated: 2026-03-22
 
 ## Checklist
 
@@ -14,7 +14,8 @@ This folder is reserved for a step-by-step React version of the existing public 
 - [x] Phase 3: Component with props and hooks
 - [x] Phase 4: Replace Vue GitHub Pages deployment with React
 - [x] Phase 5: Replace mock holiday data with real AWS Lambda API call
-- [ ] Phase 6: Store recent results
+- [x] Phase 6: Deploy locally in a Docker Desktop container
+- [ ] Phase 7: Store recent results
 
 ## Scope for now
 
@@ -150,7 +151,32 @@ Learning focus:
 - API contract design
 - Configuration management
 
-### Phase 6: Store recent results
+### Phase 6: Deploy locally in a Docker Desktop container
+
+Status: completed
+
+Goal: run the React app in a local Docker Desktop container with a stable browser URL.
+
+Planned work:
+- [x] Add a production-ready `Dockerfile` with a multi-stage build
+- [x] Add a `.dockerignore` file to keep the image context small
+- [x] Serve the built app from a lightweight web server in the container
+- [x] Expose the container web port and document host mapping for local access
+- [x] Add simple build and run commands to project documentation
+
+Completed result:
+- Multi-stage Docker image build added using Node for build and Nginx for runtime
+- Local Docker Desktop commands documented in README and package scripts
+- Production app build verified successfully after Docker setup changes
+- Docker image build validated locally and the container served HTTP 200 on localhost:8080
+
+Learning focus:
+- Container image lifecycle
+- Multi-stage Docker builds
+- Port binding from container to host
+- Local runtime parity across environments
+
+### Phase 7: Store recent results
 
 Status: not started
 
@@ -179,6 +205,9 @@ Learning focus:
 - `c:\r\v\PublicHoliday\public-holiday-react\src\App.jsx` — keep this focused on wiring hook output into the page
 - `c:\r\v\PublicHoliday\public-holiday-react\vite.config.js` — update this during the deployment phase for the GitHub Pages base path
 - `c:\r\v\PublicHoliday\public-holiday-react\package.json` — add or update environment-aware scripts only if needed for the Lambda integration
+- `c:\r\v\PublicHoliday\public-holiday-react\Dockerfile` — define the multi-stage container build and runtime image
+- `c:\r\v\PublicHoliday\public-holiday-react\.dockerignore` — reduce Docker build context and avoid copying local artifacts
+- `c:\r\v\PublicHoliday\public-holiday-react\README.md` — add local Docker Desktop build, run, and cleanup commands
 - `c:\r\v\PublicHoliday\.github\workflows\deploy.yml` — switch the GitHub Pages workflow from Vue to React
 - `c:\r\v\PublicHoliday\README.md` — update later to reflect the React deployment and live API wiring
 
@@ -192,8 +221,9 @@ Learning focus:
 6. After the deployment switch, confirm the repository GitHub Pages site serves the React app at the existing site URL instead of the Vue app.
 7. During the AWS Lambda phase, verify the mock logic has been removed from the hook, the real endpoint is called, loading and error states are visible, and the returned data is parsed into the current title and description UI.
 8. Add or update tests around the hook or UI so the live-data path is covered without making brittle real-network assumptions during normal test runs.
-9. After the recent-results store step, verify newly loaded results are appended, ordering is correct, and duplicate-handling behavior is defined.
-10. Run linting and the chosen test commands for the new app only.
+9. During the Docker phase, verify `docker build` completes, the container starts, the app loads at the mapped host URL, and a stop or cleanup command is documented.
+10. After the recent-results store step, verify newly loaded results are appended, ordering is correct, and duplicate-handling behavior is defined.
+11. Run linting and the chosen test commands for the new app only.
 
 ## Tracking notes
 

@@ -3,6 +3,8 @@
         "npm run android:run": true,
         "java": true,
         "&": true,
-        "Move-Item": true
+        "Move-Item": true,
+        "docker build": true,
+        "docker run": true
     }
 }

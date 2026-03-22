@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:docker": "VITE_BUILD_TARGET=docker vite build",
     "preview": "vite preview",
-    "test:unit": "vitest run"
+    "test:unit": "vitest run",
+    "docker:build": "docker build -t public-holiday-react:local --build-arg VITE_BUILD_TARGET=docker .",
+    "docker:run": "docker run --name public-holiday-react --rm -p 8080:80 public-holiday-react:local"
   },
   "dependencies": {
     "react": "^18.3.1",
