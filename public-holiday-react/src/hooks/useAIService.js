@@ -1,6 +1,8 @@
 import { useState } from 'react'
 
 const LAMBDA_URL = 'https://45f2opaos26j5odxxk3ldbjs5q0zavtg.lambda-url.eu-north-1.on.aws/'
+const DEV_PROXY_URL = '/api/holiday'
+const SERVICE_URL = import.meta.env.DEV ? DEV_PROXY_URL : LAMBDA_URL
 
 const initialHoliday = {
   title: 'Today\'s public holiday',
@@ -47,7 +49,7 @@ export function useAIService() {
 
     try {
       const question = buildQuestion()
-      const response = await fetch(`${LAMBDA_URL}?question=${encodeURIComponent(question)}`, {
+      const response = await fetch(`${SERVICE_URL}?question=${encodeURIComponent(question)}`, {
         method: 'POST',
       })
 

@@ -25,6 +25,12 @@ npm run dev
 - Input: a `question` query parameter containing the generated holiday prompt
 - Response: plain text where the first line becomes the title and the remaining lines become the description
 
+### Local development CORS behavior
+
+- In local development (`npm run dev`), the app calls `/api/holiday`.
+- Vite proxies that path to the AWS Lambda URL, so requests originate from the dev server and avoid browser CORS blocks on `localhost`.
+- In production builds, the app still calls the Lambda URL directly.
+
 The endpoint is hardcoded for now as requested in the plan discussion.
 
 ## Run the first unit test
