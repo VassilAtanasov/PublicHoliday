@@ -8,7 +8,7 @@ afterEach(() => {
 })
 
 describe('App', () => {
-  it('renders the heading and loads a holiday from AWS Lambda after clicking the button', async () => {
+  it('renders the heading and loads a holiday from AI service after clicking the button', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue({
       ok: true,
       text: async () => 'Lambda result: Independence Day\nUnited States\nObserved as a national day off work in the United States.',
@@ -31,11 +31,11 @@ describe('App', () => {
     ).toBeInTheDocument()
     expect(fetch).toHaveBeenCalledTimes(1)
     expect(fetch).toHaveBeenCalledWith(expect.stringContaining('question='), {
-      method: 'POST',
+      method: 'GET',
     })
   })
 
-  it('shows an error state when the AWS Lambda request fails', async () => {
+  it('shows an error state when the AI service request fails', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValue({
       ok: false,
       status: 500,

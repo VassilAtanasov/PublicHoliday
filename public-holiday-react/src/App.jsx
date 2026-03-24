@@ -2,7 +2,7 @@ import HolidayResult from './components/HolidayResult'
 import { useAIService } from './hooks/useAIService'
 
 function App() {
-  const { holiday, loading, error, loadMockHoliday } = useAIService()
+  const { holiday, loading, streaming, error, loadMockHoliday } = useAIService()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 text-slate-900">
@@ -11,7 +11,7 @@ function App() {
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-white">
             <h1 className="text-center text-2xl font-bold">Public Holiday React</h1>
             <p className="mt-2 text-center text-sm text-blue-100">
-              Phase 5: live AWS Lambda data through a custom hook.
+              Live holiday results with native SSE streaming.
             </p>
           </div>
 
@@ -20,6 +20,7 @@ function App() {
               title={holiday.title}
               description={holiday.description}
               loading={loading}
+              streaming={streaming}
               error={error}
             />
 
@@ -29,7 +30,9 @@ function App() {
               disabled={loading}
               className="w-full rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 font-semibold text-white shadow-md transition duration-200 hover:from-blue-700 hover:to-indigo-700 disabled:cursor-not-allowed disabled:opacity-70"
             >
-              {loading ? 'Loading...' : 'Load Today\'s Holiday'}
+              {loading
+                ? (streaming ? 'Streaming...' : 'Loading...')
+                : 'Load Today\'s Holiday'}
             </button>
           </div>
 

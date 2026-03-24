@@ -9,6 +9,9 @@ param(
     # Fallback: Lambda URL if the backend service is not deployed yet.
     [string]$ApiUpstream  = "http://aiservice:8080/api/ask",
 
+    # Where /api/ask/stream should be proxied to for SSE.
+    [string]$ApiStreamUpstream = "http://aiservice:8080/api/ask/stream",
+
     [switch]$SkipBuild,
     [switch]$SkipApply
 )
@@ -96,10 +99,12 @@ Write-Step "Loading $imageRef into Docker Desktop kind nodes"
 Import-ImageToKindNodes -ImageRef $imageRef
 
 # ── Apply ConfigMap with runtime nginx config ──────────────────────────────────
-Write-Step "Applying nginx ConfigMap (API upstream: $ApiUpstream)"
+Write-Step "Applying nginx ConfigMap (API upstream: $ApiUpstream, stream upstream: $ApiStreamUpstream)"
 
 $templatePath = Join-Path $frontendRoot "k8s\nginx.conf.template"
-$nginxConf    = (Get-Content $templatePath -Raw) -replace '__API_UPSTREAM__', $ApiUpstream
+$nginxConf    = (Get-Content $templatePath -Raw) `
+    -replace '__API_UPSTREAM__', $ApiUpstream `
+    -replace '__API_STREAM_UPSTREAM__', $ApiStreamUpstream
 
 # Use a temp file for kubectl stdin apply
 $tmpConf = Join-Path $env:TEMP "holiday-frontend-nginx.conf"
@@ -135,3 +140,4 @@ kubectl get pods,svc -n $Namespace
 Write-Host "`nFrontend deployment complete." -ForegroundColor Green
 Write-Host "Access the app at: http://localhost" -ForegroundColor Yellow
 Write-Host "API upstream configured as: $ApiUpstream" -ForegroundColor Yellow
+Write-Host "API stream upstream configured as: $ApiStreamUpstream" -ForegroundColor Yellow

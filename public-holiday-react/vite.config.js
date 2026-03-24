@@ -2,12 +2,17 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 const lambdaTarget = 'https://obeo6mf6wgez53kqen5bcjfyou0pfmem.lambda-url.eu-north-1.on.aws/'
+const aiServiceTarget = process.env.AI_SERVICE_TARGET || 'http://localhost:8080'
 
 export default defineConfig(({ command }) => ({
   base: command === 'build' && process.env.VITE_BUILD_TARGET !== 'docker' ? '/PublicHoliday/' : '/',
   plugins: [react()],
   server: {
     proxy: {
+      '/api/ask': {
+        target: aiServiceTarget,
+        changeOrigin: true,
+      },
       '/api/holiday': {
         target: lambdaTarget,
         changeOrigin: true,

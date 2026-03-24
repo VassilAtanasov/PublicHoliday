@@ -1,5 +1,5 @@
-function HolidayResult({ title, description, loading, error }) {
-  if (loading) {
+function HolidayResult({ title, description, loading, streaming, error }) {
+  if (loading && !streaming) {
     return (
       <div className="py-8 text-center">
         <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
@@ -26,6 +26,10 @@ function HolidayResult({ title, description, loading, error }) {
       <div className="rounded-lg bg-gray-50 p-4">
         <p className="whitespace-pre-line text-gray-700">{description}</p>
       </div>
+
+      {streaming && (
+        <p className="text-sm text-gray-500">Streaming in progress...</p>
+      )}
     </>
   )
 }
