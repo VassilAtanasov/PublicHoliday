@@ -52,7 +52,7 @@ export function useAIService() {
     try {
       const question = buildQuestion()
       const response = await fetch(`${SERVICE_URL}?question=${encodeURIComponent(question)}`, {
-        method: 'POST',
+        method: 'GET',
       })
 
       if (!response.ok) {
