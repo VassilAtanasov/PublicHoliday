@@ -22,10 +22,28 @@ function MarkdownRenderer({ content }) {
 
 export default function App() {
   const [date, setDate] = useState(getTodayDate())
-  const [aiMode, setAiMode] = useState('MCP')
+  const [aiMode, setAiMode] = useState('mcp')
   const [result, setResult] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [systemPrompt, setSystemPrompt] = useState(`You are a precise world holiday reference database. Return ONLY the requested holiday information in clean Markdown format. Never add introductions, conclusions, disclaimers, or any commentary.
+
+RULES:
+1. List national public holidays (official non-working days) for the specified date worldwide
+2. Always list United States holidays first (if any exist for the date)
+3. Group holidays by name, then list affected countries as bullet points under each holiday
+4. Within each holiday group, order countries by population (largest first)
+5. For holidays unique to one country, list the holiday name with the country as a single bullet
+6. Do not hallucinate! If no national public holidays exist for the date, return exactly: "No national public holidays found for this date."
+7. Use this format:
+
+## [Holiday Name]
+- Country A
+- Country B
+
+## [Another Holiday]
+- Country C`)
+  const [userPrompt, setUserPrompt] = useState(`List national public holidays (off work) on ${getTodayDate()} worldwide.`)
 
   async function fetchHolidays() {
     if (!date) return
@@ -35,11 +53,14 @@ export default function App() {
     try {
       // RAG mode requires userPrompt instead of date
       if (aiMode === 'rag') {
-        const userPrompt = `List national public holidays on ${date}.`
         const res = await fetch(`${API_BASE}/api/holidays-${aiMode}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ userPrompt })
+          body: JSON.stringify({ 
+            date,
+            systemPrompt,
+            userPrompt 
+          })
         })
 
         if (!res.ok) {
@@ -53,7 +74,11 @@ export default function App() {
         const res = await fetch(`${API_BASE}/api/holidays-${aiMode}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ date })
+          body: JSON.stringify({ 
+            date,
+            systemPrompt,
+            userPrompt 
+          })
         })
 
         if (!res.ok) {
@@ -94,6 +119,35 @@ export default function App() {
           </div>
 
           <button onClick={fetchHolidays} disabled={loading}>{loading? 'Loading...':'Find Holidays'}</button>
+        </div>
+
+        {/* Prompts Configuration Section */}
+        <div className="prompts-config">
+          <h3>Prompts Configuration (Editable)</h3>
+          
+          <div className="prompt-group">
+            <label htmlFor="system-prompt-textarea">System Prompt</label>
+            <textarea
+              id="system-prompt-textarea"
+              value={systemPrompt}
+              onChange={(e) => setSystemPrompt(e.target.value)}
+              disabled={loading}
+              className="prompt-textarea"
+              placeholder="Enter custom system prompt..."
+            />
+          </div>
+
+          <div className="prompt-group">
+            <label htmlFor="user-prompt-textarea">User Prompt</label>
+            <textarea
+              id="user-prompt-textarea"
+              value={userPrompt}
+              onChange={(e) => setUserPrompt(e.target.value)}
+              disabled={loading}
+              className="prompt-textarea"
+              placeholder="Enter custom user prompt..."
+            />
+          </div>
         </div>
 
         <section className="results">
