@@ -22,7 +22,7 @@ function MarkdownRenderer({ content }) {
 
 export default function App() {
   const [date, setDate] = useState(getTodayDate())
-  const [aiMode, setAiMode] = useState('base')
+  const [aiMode, setAiMode] = useState('MCP')
   const [result, setResult] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
