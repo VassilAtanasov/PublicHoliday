@@ -12,3 +12,72 @@ body{margin:0;font-family:Inter,system-ui,Arial,Helvetica,sans-serif;background:
 .results{margin-top:1rem;padding:1rem;border-radius:8px;background:rgba(255,255,255,0.02);min-height:120px}
 .markdown p{margin:0 0 0.5rem 0;color:#cfe8ff}
 .error{color:#ffb4b4;background:rgba(255,180,180,0.04);padding:0.5rem;border-radius:6px}
+
+/* Prompts Configuration Section Styling */
+.prompts-config {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 16px;
+}
+
+.prompts-config h3 {
+  margin: 0 0 1rem 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.prompt-group {
+  margin-bottom: 1rem;
+}
+
+.prompt-group:last-child {
+  margin-bottom: 0;
+}
+
+.prompt-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+}
+
+.prompt-textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  background: rgba(2, 6, 23, 0.8);
+  color: #cbd5e1;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.prompt-textarea:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+.prompt-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.prompt-textarea::placeholder {
+  color: #475569;
+}
