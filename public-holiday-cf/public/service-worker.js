@@ -1,5 +1,5 @@
 const CACHE_NAME = 'public-holiday-cache-v1'
-const ASSETS = ['/', '/index.html', '/manifest.json', '/favicon.svg']
+const ASSETS = ['/PublicHoliday/', '/PublicHoliday/index.html', '/PublicHoliday/manifest.json', '/PublicHoliday/favicon.svg']
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)))

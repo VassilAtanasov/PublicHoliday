@@ -1,11 +1,11 @@
 {
   "name": "World Public Holidays",
   "short_name": "Holidays",
-  "start_url": "/",
+  "start_url": "/PublicHoliday/",
   "display": "standalone",
   "background_color": "#0f1724",
   "theme_color": "#38bdf8",
   "icons": [
-    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+    { "src": "/PublicHoliday/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
   ]
 }

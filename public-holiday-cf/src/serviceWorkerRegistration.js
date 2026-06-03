@@ -2,7 +2,7 @@
 export function register() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js').catch((err) => {
+      navigator.serviceWorker.register('/PublicHoliday/service-worker.js').catch((err) => {
         // ignore registration errors
         console.warn('SW registration failed', err)
       })
