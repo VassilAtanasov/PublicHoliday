@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const API_BASE = 'https://holidays-app.v-atanasov.workers.dev'
+const API_BASE = import.meta.env.VITE_API_BASE || ''
 
 function getTodayDate() {
   const now = new Date()
