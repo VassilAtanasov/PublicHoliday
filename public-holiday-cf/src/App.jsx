@@ -86,10 +86,10 @@ export default function App() {
           </div>
 
           <div className="modes">
-            <button onClick={() => setAiMode('base')} className={aiMode==='base'? 'active':''}>Base</button>
-            <button onClick={() => setAiMode('lora')} className={aiMode==='lora'? 'active':''}>LoRA</button>
             <button onClick={() => setAiMode('mcp')} className={aiMode==='mcp'? 'active':''}>MCP</button>
             <button onClick={() => setAiMode('rag')} className={aiMode==='rag'? 'active':''}>RAG</button>
+            <button onClick={() => setAiMode('base')} className={aiMode==='base'? 'active':''}>Base</button>
+            <button onClick={() => setAiMode('lora')} className={aiMode==='lora'? 'active':''}>LoRA</button>
             <button onClick={() => setAiMode('reasoning')} className={aiMode==='reasoning'? 'active':''}>Reasoning</button>
           </div>
 
