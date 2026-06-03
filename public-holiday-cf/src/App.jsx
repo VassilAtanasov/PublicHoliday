@@ -33,19 +33,37 @@ export default function App() {
     setError('')
     setResult('')
     try {
-      const res = await fetch(`${API_BASE}/api/holidays-${aiMode}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ date })
-      })
+      // RAG mode requires userPrompt instead of date
+      if (aiMode === 'rag') {
+        const userPrompt = `List national public holidays on ${date}.`
+        const res = await fetch(`${API_BASE}/api/holidays-${aiMode}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ userPrompt })
+        })
 
-      if (!res.ok) {
-        const txt = await res.text()
-        throw new Error(txt || `HTTP ${res.status}`)
+        if (!res.ok) {
+          const txt = await res.text()
+          throw new Error(txt || `HTTP ${res.status}`)
+        }
+
+        const data = await res.json()
+        setResult(typeof data.result === 'string' ? data.result : JSON.stringify(data.result, null, 2))
+      } else {
+        const res = await fetch(`${API_BASE}/api/holidays-${aiMode}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ date })
+        })
+
+        if (!res.ok) {
+          const txt = await res.text()
+          throw new Error(txt || `HTTP ${res.status}`)
+        }
+
+        const data = await res.json()
+        setResult(typeof data.result === 'string' ? data.result : JSON.stringify(data.result, null, 2))
       }
-
-      const data = await res.json()
-      setResult(typeof data.result === 'string' ? data.result : JSON.stringify(data.result, null, 2))
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err))
     } finally {
